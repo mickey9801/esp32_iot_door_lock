@@ -14,6 +14,39 @@ Current I am using Adafruit HAZZAH32 Feather for development. I intend to switch
 9. Delay auto relock when the door opened
 10. Resume auto relock when the door closed, with 1.5s delay for sensor bounce
 
+## Wiring
+![ESP32 IoT door lock wiring](https://github.com/mickey9801/eps32_iot_door_lock/blob/master/Door%20Lock%20Sketch_HAZZAH32.jpg?raw=true)
+
+## Parts List
+
+### Core
+* [Adafruit HUZZAH32 - ESP32 Feather](https://www.adafruit.com/product/3405)
+* Headers (HAZZAH32: 12+16pins, ESP32 Dev board: 19+19pins)
+
+### Lock Parts
+* [12VDC Solenoid](https://www.adafruit.com/product/1512)
+* [TIP120 Power Darlington Transistors](https://www.adafruit.com/product/976)
+* [1N4001 Diode](https://www.adafruit.com/product/755)
+* [2.1mm DC barrel jack](https://www.adafruit.com/product/373)
+
+### Push Button Parts
+* [Pushbutton - Momentary](https://www.adafruit.com/product/481)
+* 4 pin JST plug and socket
+
+### Door Sensor Parts
+* [Magnetic contact switch (door sensor)](https://www.adafruit.com/product/375)
+* 2 pin JST plug and socket
+
+### LEDs
+* 220ohm resistor x2
+* Green and Red LED
+
+### Others
+* Active buzzer
+* [1/2 sized breadboard](https://www.adafruit.com/product/1609)
+* Some wire
+* (optional) 3.7V Lithium Ion Battery
+
 ## How To Start
 Change `ssid`, `password` as your Wi-Fi AP setup, and set `mDNSName` with any valid hostname you want. The ESP32 will then be able to access using `http://<mDNSName>.local` by browser in the same Wi-Fi network.
 
@@ -24,7 +57,7 @@ GET|/||Lock page with lock state
 POST|/|act=lock\|unlock|Lock or unlock, return lock page with updated lock state
 GET|/status||Retrieve lock and door state in JSON format
 
-## TODO
+## ToDo
 * MQTTs support (topic: comicparty/iot/lock/#)
 * Homebridge and Siri support
 * Log for lock and door state
