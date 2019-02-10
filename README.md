@@ -4,18 +4,18 @@ This is a sketch for IoT door lock using EPS32 microcontroller with Arduino IDE.
 Current I am using Adafruit HAZZAH32 Feather for development. I intend to switch to Espressif's ESP32 development board later for lower cost.
 
 ## Features
-1. Connect local Wi-Fi network with mDNS
-2. Lock and Unlock the lock by different way:
-  4. Push button
-  5. HTTP request (may be removed later)
-6. Relock after unlocked for 5 sec.
-7. Turn on green LED when unlocked
-8. Detect door opened with reed sensor. If opened, beep the buzzer and turn on red LED
-9. Delay auto relock when the door opened
-10. Resume auto relock when the door closed, with 1.5s delay for sensor bounce
+* Connect local Wi-Fi network with mDNS
+* Lock and Unlock the lock by different way:
+   *  Pushbutton
+   *  HTTP request (may be removed later)
+* Relock after unlocked for 5 sec.
+* Turn on green LED when unlocked
+* Detect door opened with reed sensor. If opened, beep the buzzer and turn on red LED
+* Delay auto relock when the door opened
+* Resume auto relock when the door closed, with 1.5s delay for sensor bounce
 
 ## Wiring
-![ESP32 IoT door lock wiring](https://github.com/mickey9801/eps32_iot_door_lock/blob/master/Door%20Lock%20Sketch_HAZZAH32.jpg?raw=true)
+<img height="550" src="https://raw.githubusercontent.com/mickey9801/eps32_iot_door_lock/master/Door%20Lock%20Sketch_HAZZAH32.jpg?sanitize=true&raw=true" alt="ESP32 IoT door lock wiring" />
 
 ## Parts List
 
@@ -28,6 +28,7 @@ Current I am using Adafruit HAZZAH32 Feather for development. I intend to switch
 * [TIP120 Power Darlington Transistors](https://www.adafruit.com/product/976)
 * [1N4001 Diode](https://www.adafruit.com/product/755)
 * [2.1mm DC barrel jack](https://www.adafruit.com/product/373)
+* 1kOhm resistor (not require if using MOSFET)
 
 ### Push Button Parts
 * [Pushbutton - Momentary](https://www.adafruit.com/product/481)
@@ -38,7 +39,7 @@ Current I am using Adafruit HAZZAH32 Feather for development. I intend to switch
 * 2 pin JST plug and socket
 
 ### LEDs
-* 220ohm resistor x2
+* 220Ohm resistor x2
 * Green and Red LED
 
 ### Others
