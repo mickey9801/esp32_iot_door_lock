@@ -4,7 +4,6 @@
 
 // Variables
 int btnState = HIGH; // button not pushed by default
-bool isPushed = false;
 // Lock related variables
 bool isLocked = true;
 unsigned long lastUnlockTime = 0;        // The last time unlocked
