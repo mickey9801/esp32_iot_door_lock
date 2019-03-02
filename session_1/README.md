@@ -1,16 +1,26 @@
 # 1. ESP32 開發板簡介
+Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.  
 
-## 專案目標：物聯網門鎖
-（整體計劃：物聯網出入保安系統專案）  
-（門鎖規格）  
-（HomeKit 與 Google Assistant）  
-（保安考量）  
+## 專案目標：物聯網電門鎖
+（整體計劃：物聯網出入保安系統專案）   
+
+### 連接智能助理
+  
+### 保安考量
+(MQTT/TLS)  
+(ACL)  
 
 ## ESP32 規格
 （規格）  
 
-## 接線
+### 優點
+
+### 缺點  
+
+## 針位
 ![ESP32 Pinmap](esp32-pinout-v2.png?raw=true "ESP32 Pinmap")
+
+不同廠商推出的 ESP32 開發板在針腳位置和數量上都會有所分別，不過相同名稱的針腳在任何廠商的開發板中_功能都是一樣的_！
 
 ## 安裝 Arduino IDE ESP32 開發環境
 ![Arduino IDE](https://raw.githubusercontent.com/espressif/arduino-esp32/master/docs/arduino-ide/win-screenshots/arduino-ide.png "Arduino IDE")

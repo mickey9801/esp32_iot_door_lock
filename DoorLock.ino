@@ -1,6 +1,6 @@
 /*
  * ComicParty ESP32 IoT door lock
- * Copyright (C) 2019 Mickey Chan
+ * Copyright (C) 2019 Mickey Chan. ALL RIGHTS RESERVED.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

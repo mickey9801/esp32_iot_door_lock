@@ -1,4 +1,6 @@
 # 2. 基礎門鎖
+Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.  
+
 ## 功能
 * 按掣開啟電門鎖
 * 電門鎖開啟時亮著綠色 LED
@@ -23,13 +25,14 @@
 
 選用哪一類電門鎖主要看應用場景，例如大門鎖一般選用 Fail-safe 類，以防火警時無法開門逃生。當然現在有很多大門用的 Fail-security 電門鎖可以透過撥桿等物理方式來開啟門鎖逃生。
 
-## 如何使用 TIP120 晶體管控制 12V 電源
+## 使用 TIP120 或 MOSFET 控制大電源
 ### TIP120
 ![TIP120](tip120.png "TIP120")
 
 TIP120 是由兩粒電晶體組成的達靈頓電晶體，第一個電晶體的射極（Emitter）連接到第二個電晶體的的基極（Base）。這提供了非常高的電流增益，但是使所需的基極偏置電壓加倍並增加了集極（Collector）飽和電壓。
 
 使用 TIP120 時，需要在基極與 GPIO 之間串接 1K 電阻。
+![TIP120 連接](tip120_connect.png "TIP120 連接")
 
 ### MOSFET （金屬氧化物場效應電晶體）  
 ![N 通道 場效應晶體管](N-channel-MOSFET.png "N通道 場效應晶體管")
@@ -38,16 +41,11 @@ MOSFET 是一種通過電場效應控制電流的電子元件。只要在閘極�
 
 為了確保在開啟電源至程式設定 GPIO 電壓初值之間的空隙時間裡，連接 MOSFET 的 GPIO 處於低電壓（LOW）狀態，可以在 GPIO 上接上 10K Pull-down 電阻至 GND 。
 
+![MOSFET 連接](mosfet_connect.png "MOSFET 連接")
+
 ## 接線
 ### 線路圖
-![Session 2 接路圖](session_2-schemactic.png "Session 2 線路圖")
+<img src="session_2-schematic.png" width="300" alt="基本門鎖線路圖" title="基本門鎖線路圖">
 
 ### 麵包板
-
-![Session 2 麵包板](session_2_breadboard.jpg "Session 2 麵包板")  
-
-## 草稿碼
-
-### 自動重新上鎖 1：單純重新上鎖
-
-## 參考文獻
+<img src="session_2_breadboard.jpg" width="400" alt="基本門鎖麵包板" title="基本門鎖麵包板">
