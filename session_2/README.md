@@ -7,7 +7,7 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 * 電門鎖開啟 5 秒後自動重新上鎖
 
 ## 電門鎖種類
-電門鎖按照失去電力後的狀態為 Fail-security 和 Fail-safe 兩類。這兩類別所指的對象是_被關上的一方_。
+電門鎖按照失去電力後的狀態為 Fail-security 和 Fail-safe 兩類。這兩類別所指的對象是__被關上的一方__。
 
 ### Fail-Security
 * 失去電力後門會被鎖上
@@ -17,7 +17,7 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 * 門閂型電門鎖通常都是 Fail-security 類
 
 ### Fail-Safe
-* 失去電力後門鎖會開啟，可以讓人自由出入
+* 失去電力後門鎖會開啟，可以讓人自由出入逃生
 * 安全優先
 * 需要電力鎖門
 * 由於需要長期供電才能上鎖，所以較為耗電
@@ -32,6 +32,7 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 TIP120 是由兩粒電晶體組成的達靈頓電晶體，第一個電晶體的射極（Emitter）連接到第二個電晶體的的基極（Base）。這提供了非常高的電流增益，但是使所需的基極偏置電壓加倍並增加了集極（Collector）飽和電壓。
 
 使用 TIP120 時，需要在基極與 GPIO 之間串接 1K 電阻。
+
 ![TIP120 連接](tip120_connect.png "TIP120 連接")
 
 ### MOSFET （金屬氧化物場效應電晶體）  
