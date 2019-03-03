@@ -34,9 +34,15 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 ### 麵包板
 <img src="session_3_1_breadboard.jpg" width="400" alt="門窗感測麵包板" title="門窗感測麵包板">
 
+## 草稿碼
+[門窗感測草稿碼](session_3_1.ino)
+
 ## 完整電門鎖電路
 ### 線路圖
 <img src="session_3_2-schematic.png" width="300" alt="物聯網電門鎖完整線路圖" title="物聯網電門鎖完整線路圖">
 
 ### 麵包板
 <img src="session_3_2_breadboard.jpg" width="400" alt="物聯網電門鎖完整麵包板" title="物聯網電門鎖完整麵包板">
+
+## 草稿碼
+[完整電門鎖草稿碼](session_3_2.ino)

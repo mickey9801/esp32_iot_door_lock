@@ -7,7 +7,7 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 * 電門鎖開啟 5 秒後自動重新上鎖
 
 ## 電門鎖種類
-電門鎖按照失去電力後的狀態為 Fail-security 和 Fail-safe 兩類。這兩類別所指的對象是__被關上的一方__。
+電門鎖按照失去電力後的狀態為 Fail-security 和 Fail-safe 兩類。這兩類別所指的對象是**被關上的一方**。
 
 ### Fail-Security
 * 失去電力後門會被鎖上
@@ -16,6 +16,12 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 * 因為只有開啟門鎖才需要用電，所以較為省電
 * 門閂型電門鎖通常都是 Fail-security 類
 
+<img src="solenoid.jpg" width="300" alt="電磁門閂" title="電磁門閂" />
+
+<img src="bolt_lock.jpg" width="300" alt="Deadbolt Lock" title="Deadbolt Lock" />
+
+<img src="electricstrikes.jpg" width="300" alt="Electric Strikes" title="Electric Strikes" />
+
 ### Fail-Safe
 * 失去電力後門鎖會開啟，可以讓人自由出入逃生
 * 安全優先
@@ -23,9 +29,15 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 * 由於需要長期供電才能上鎖，所以較為耗電
 * 電磁鐵型門鎖通常都是 Fail-safe 類
 
+<img src="electromagnetic_lock.jpg" width="300" alt="電磁鐵門鎖" title="電磁鐵門鎖" />
+
 選用哪一類電門鎖主要看應用場景，例如大門鎖一般選用 Fail-safe 類，以防火警時無法開門逃生。當然現在有很多大門用的 Fail-security 電門鎖可以透過撥桿等物理方式來開啟門鎖逃生。
 
-## 使用 TIP120 或 MOSFET 控制大電源
+<img src="lockset.jpg" width="300" alt="家用電閘門鎖" title="家用電閘門鎖" />
+
+[<img src="lockset_interior.jpg" width="300" alt="家用電閘門鎖內部" title="家用電閘門鎖內部" />](https://youtu.be/GzIdbsv296g)
+
+## 控制大電源：運用 TIP120 或 MOSFET 電晶體
 ### TIP120
 ![TIP120](tip120.png "TIP120")
 
@@ -50,3 +62,6 @@ MOSFET 是一種通過電場效應控制電流的電子元件。只要在閘極�
 
 ### 麵包板
 <img src="session_2_breadboard.jpg" width="400" alt="基本門鎖麵包板" title="基本門鎖麵包板">
+
+## 草稿碼
+[基礎門鎖草稿碼](session_2.ino)

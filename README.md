@@ -20,10 +20,10 @@
 
 \#|題目|說明
 :--:|---|---
-1|ESP32 開發板簡介|<ul><li>專案目標</li><li>接口 （GPIO、SPI、I2C、UART）</li><li>Arduino IDE 開發環境</li></ul>
-2|基礎門鎖|<p>建立使用按扭的門鎖系統</p><ul><li>介紹電門鎖規格</li><li>如何使用 TIP120 晶體管控制 12V 電源</li><li>認識附有 LED 的按鈕</li><li>自動重新上鎖 1：單純重新上鎖</li></ul>
-3|門窗感測|<p>當門被打開時發出警號</p><ul><li>門窗感測器應用</li><li>運用主動式蜂鳴器</li><li>警告 LED</li><li>自動重新上鎖 2：延遲重新上鎖</li></ul>
-4|連接 Wi-Fi|<p>透過瀏覽器來控制門鎖</p><ul><li>連接 Wi-Fi</li><li>透過 NTP 同步時鐘</li><li>介紹 mDNS 和 Bonjour</li><li>架設網頁伺服器</li><li>開發門鎖 API</li><li>提示開鎖 LED</li><ul>
+1|ESP32 開發板簡介|<ul><li>專案目標</li><li>規格</li><li>針腳 （GPIO、SPI、I2C、UART）</li><li>Arduino IDE 開發環境</li></ul>
+2|基礎門鎖|<p>建立使用按扭的門鎖系統</p><ul><li>認識電門鎖種類</li><li>控制大電源： TIP120 與 MOSFET 晶體管的應用</li><li>自動重新上鎖 1：單純重新上鎖</li></ul>
+3|門窗感測|<p>當門被打開時發出警號</p><ul><li>門窗感測器應用</li><li>運用主動式蜂鳴器</li><li>自動重新上鎖 2：延遲重新上鎖</li><li>結合門鎖電路的完整電路</li></ul>
+4|連接 Wi-Fi|<p>透過瀏覽器來控制門鎖</p><ul><li>連接 Wi-Fi</li><li>透過 NTP 同步時鐘</li><li>介紹 mDNS 和 Bonjour</li><li>架設網頁伺服器</li><li>開發門鎖 API</li><ul>
 5|MQTT 第 1 部：經理人端|<p>在 Raspberry Pi 上架設 MQTT 經理人</p><ul><li>認識 MQTT</li><li>安裝 Mosquitto</li><li>設定 Mosquitto</li><li>示範訂閱與出版</li><li>安裝 MQTTBox</li><li>設計題目並測試</li></ul>
 6|MQTT 第 2 部：客戶端|<p>使用 MQTT 來控制門鎖</p><ul><li>認識 PubSubClient</li><li>連接 MQTT 經理人</li><li>認識 ArduinoJson</li><li>訂閱門鎖題目並控制門鎖</li><li>發布門鎖和門的狀態</li></ul>
 7|MQTT 第 3 部：保安|<p>認識互聯網裝置的基礎保安</p><ul><li>Mosquitto 的認證選擇</li><li>建立用戶＋密碼方式認證</li><li>以 TLS 進行加密連線</li><li>在 Raspberry Pi 建立私人認證中心</li><li>自簽 MQTT 伺服器證書</li><li>在 ESP32 設定 TLS 連線</li><li>認識客戶端證書</li><li>認識存取控制與 ACL （存取控制清單）</li></ul>

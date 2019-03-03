@@ -50,7 +50,7 @@ Deep Sleep 超低電量模式
 ## 針腳
 ![ESP32 Pinmap](esp32-pinout-v2.png?raw=true "ESP32 Pinmap")
 
-不同廠商推出的 ESP32 開發板在針腳位置和數量上都會有所分別，不過相同名稱的針腳在任何廠商的開發板中__功能都是一樣的__！
+不同廠商推出的 ESP32 開發板在針腳位置和數量上都會有所分別，不過相同名稱的針腳在任何廠商的開發板中**功能都是一樣的**！
 
 ### 注意事項
 * 各 GPIO 電壓為 3.3V ；
@@ -76,10 +76,11 @@ Deep Sleep 超低電量模式
 
 ## 基本 ESP32 編程
 （連接開發板）  
-（語法）  
 （上載程式）  
 （串行監視器）  
-（範例：利用開發板上的 BOOT 按鈕來控制板上的 LED 閃燈次數）
+
+### 小遊戲：利用開發板上的 BOOT 按鈕來控制板上的 LED 閃燈次數
+[草稿碼](session_1.ino)
 
 ## 參考文獻
 * [Arduino language reference](https://www.arduino.cc/en/Reference/HomePage)
