@@ -2,18 +2,28 @@
 Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.  
 
 ## 功能
-* 按掣開啟電門鎖
-* 電門鎖開啟時亮著綠色 LED
+* 按掣開啟電門鎖；
+* 電門鎖開啟時亮著綠色 LED；
 * 電門鎖開啟 5 秒後自動重新上鎖
+
+## 零件表
+* 1 x ESP32 官方開發板（或兼容板）；
+* 1 x 電門鎖；
+* 1 x TIP120；
+* 1 x 1k Ohm 電阻；
+* 1 x 1N4001 二極管；
+* 1 x 綠色 LED；
+* 1 x 220 Ohms 電阻；
+* 1 x 按鈕；
 
 ## 電門鎖種類
 電門鎖按照失去電力後的狀態為 Fail-security 和 Fail-safe 兩類。這兩類別所指的對象是**被關上的一方**。
 
 ### Fail-Security
-* 失去電力後門會被鎖上
-* 保安優先
-* 需要電力來開啟門鎖
-* 因為只有開啟門鎖才需要用電，所以較為省電
+* 失去電力後門會被鎖上；
+* 保安優先；
+* 需要電力來開啟門鎖；
+* 因為只有開啟門鎖才需要用電，所以較為省電；
 * 門閂型電門鎖通常都是 Fail-security 類
 
 <img src="solenoid.jpg" width="300" alt="電磁門閂" title="電磁門閂" />
@@ -23,10 +33,10 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 <img src="electricstrikes.jpg" width="300" alt="Electric Strikes" title="Electric Strikes" />
 
 ### Fail-Safe
-* 失去電力後門鎖會開啟，可以讓人自由出入逃生
-* 安全優先
-* 需要電力鎖門
-* 由於需要長期供電才能上鎖，所以較為耗電
+* 失去電力後門鎖會開啟，可以讓人自由出入逃生；
+* 安全優先；
+* 需要電力鎖門；
+* 由於需要長期供電才能上鎖，所以較為耗電；
 * 電磁鐵型門鎖通常都是 Fail-safe 類
 
 <img src="electromagnetic_lock.jpg" width="300" alt="電磁鐵門鎖" title="電磁鐵門鎖" />
@@ -57,6 +67,15 @@ MOSFET 是一種通過電場效應控制電流的電子元件。只要在閘極�
 ![MOSFET 連接](mosfet_connect.png "MOSFET 連接")
 
 ## 接線
+* 12V 電源的正極連接電門鎖的正極；
+* 電門鎖的負極連接 TIP120 的集極（ C ）；
+* 為免電門鎖的線圈發生湧浪電流，在電門鎖兩極間接上 1N4001 二極管；
+* TIP120 的基極（ B ）經 1k Ohm 電阻連接到 GPIO17;
+* TIP120 的射極（ E ）直接接地；
+* 開門按鈕正極直接連接 GPIO27 （使用內部 Pull-up），負極接地；
+* 如果使用備有 12V LED 的大型按鈕，可以將 LED 正極連接 12V 輸入，負極接地；
+* GPIO32 連到綠色 LED ，經 220 Ohm 電阻接地
+
 ### 線路圖
 <img src="session_2-schematic.png" width="300" alt="基本門鎖線路圖" title="基本門鎖線路圖">
 
@@ -64,4 +83,7 @@ MOSFET 是一種通過電場效應控制電流的電子元件。只要在閘極�
 <img src="session_2_breadboard.jpg" width="400" alt="基本門鎖麵包板" title="基本門鎖麵包板">
 
 ## 草稿碼
+* 當 GPIO27 （開門按鈕） 電壓變為 LOW 時，將 GPIO17 （電門鎖） 和 GPIO32 （綠色 LED） 設為 HIGH，並紀錄解鎖時間；
+* 當解鎖超過 5 秒時，將 GPIO17 和 GPIO32 設為 LOW
+
 [基礎門鎖草稿碼](session_2.ino)
