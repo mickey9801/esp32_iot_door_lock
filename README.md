@@ -29,7 +29,7 @@
 7|MQTT 第 3 部：保安|<p>認識互聯網裝置的基礎保安</p><ul><li>Mosquitto 的認證選擇</li><li>建立用戶＋密碼方式認證</li><li>以 TLS 進行加密連線</li><li>在 Raspberry Pi 建立私人認證中心</li><li>自簽 MQTT 伺服器證書</li><li>在 ESP32 設定 TLS 連線</li><li>認識客戶端證書</li><li>認識存取控制與 ACL （存取控制清單）</li></ul>
 8|以 iPhone 來控制|<p>透過 Homekit 和 Siri 來控制門鎖</p><ul><li>Homebridge</li><li>MQTT 插件</li><li>Siri 捷徑</li></ul>
 9|以 Google Assistant 來控制|
-10|進階功能|<ul><li>分離設定程式碼</li><li>Flash 記憶與 SPIFFS 檔案系統</li><li>OTA 更新</li><li>重設 Wi-Fi （ ESP32 的 WiFiManager 程式庫與 Double Reset Detector ）</li></ul>
+10|進階功能|<ul><li>單一電源同時供應門鎖和 ESP32 開發板</li><li>分離程式碼和網頁</li><li>Flash 記憶與 SPIFFS 檔案系統</li><li>OTA 更新</li><li>重設 Wi-Fi （ ESP32 的 WiFiManager 程式庫與 Double Reset Detector ）</li></ul>
 
 ## 參考文獻
 * [Arduino language reference](https://www.arduino.cc/en/Reference/HomePage)

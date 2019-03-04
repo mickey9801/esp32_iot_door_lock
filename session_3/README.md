@@ -7,10 +7,12 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 
 ## 零件表
 * 1 x ESP32 官方開發板（或兼容板）；
+* 2 x 19 針單排母座；
 * 1 x 門窗感測器（磁力開關 ＋ 磁石）；
 * 1 x 紅色 LED；
 * 1 x 220 Ohms 電阻；
-* 1 x 主動式蜂鳴器
+* 1 x 有源蜂鳴器；
+* 1 x 麵包板
 
 ## 門窗感測器
 ![門窗感測器](wired-magnetic-door-sensor.jpg "門窗感測器")
@@ -23,14 +25,14 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 ![磁力開關的原理](reed_switch_mechanism.gif "磁力開關的原理")
 
 ## 蜂鳴器種類
-### 主動式蜂鳴器
+### 有源蜂鳴器
 * 有正負電極之分；
 * 只要通電，就能利用內藏的發震器來發聲；
 * 給予方形波可以產生不同頻率的聲音
 
-<img src="active_buzzer.jpg" width="250" alt="主動式蜂鳴器" title="主動式蜂鳴器">
+<img src="active_buzzer.jpg" width="250" alt="有源蜂鳴器" title="有源蜂鳴器">
 
-### 被動式蜂鳴器
+### 無源蜂鳴器
 * 沒有正負極之分；
 * 必須給予方形波或交流電才可以產生指定頻率的聲音；
 * 使用起來像一般喇叭
@@ -38,7 +40,7 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 ## 接線
 * 門窗感測器其中一支電極直接連接 GPIO16 （使用內部 Pull-up），另一電極接地；
 * GPIO4 連到紅色 LED ，經 220 Ohm 電阻接地；
-* GPIO33 連接到主動式蜂鳴器正極，蜂鳴器負極接地
+* GPIO33 連接到有源蜂鳴器正極，蜂鳴器負極接地
 
 ### 線路圖
 <img src="session_3_1-schematic.png" width="300" alt="門窗感測線路圖" title="門窗感測線路圖">
