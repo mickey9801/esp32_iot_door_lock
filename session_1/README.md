@@ -11,7 +11,7 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 (ACL)  
 
 ## ESP32 規格
-<img src="esp-wroom-32.jpg" width="250" alt="ESP-WROOM-32 模組" title="ESP-WROOM-32 模組" />
+<img src="imgs/esp-wroom-32.jpg" width="250" alt="ESP-WROOM-32 模組" title="ESP-WROOM-32 模組" />
 
 * 240MHz 雙核 LX6 微處理器；
 * 內藏 448KB ROM；
@@ -48,7 +48,7 @@ Deep Sleep 超低電量模式
 * 不擅於單精度浮點除數及所有雙精度浮點運算；
 
 ## 針腳
-![ESP32 Pinmap](esp32-pinout-v2.png?raw=true "ESP32 Pinmap")
+![ESP32 Pinmap](imgs/esp32-pinout-v2.png?raw=true "ESP32 Pinmap")
 
 不同廠商推出的 ESP32 開發板在針腳位置和數量上都會有所分別，不過相同名稱的針腳在任何廠商的開發板中**功能都是一樣的**！
 
