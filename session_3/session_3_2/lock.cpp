@@ -66,7 +66,11 @@ void handlePushButton() {
 
 // Relock the door after delta time if the door is not opened (delay for door close bounce)
 void handleAutoRelock() {
-  if (!isLocked && !isDoorOpened && (millis() - lastUnlockTime) > UNLOCK_TIMEOUT && (millis() - lastDoorBounceTime + DOOR_BOUNCE_DELTA) > AUTO_RELOCK_DELAY) {
+  if (!isLocked && 
+    !isDoorOpened && 
+    (millis() - lastUnlockTime) > UNLOCK_TIMEOUT && 
+    (millis() - lastDoorBounceTime + DOOR_BOUNCE_DELTA) > AUTO_RELOCK_DELAY
+  ) {
     Serial.println("Auto-relock");
     lock();
   }

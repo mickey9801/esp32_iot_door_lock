@@ -85,7 +85,23 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 * 門窗感測器函式庫([.cpp](session_3_2/door.cpp) | [.h](session_3_2/door.h))。負責處理門窗感測器的感測和反應。
 * [設定檔](session_3_2/settings.h)。只有一個 .h 標頭檔，集中存放整個電門鎖程式的設定值，例如 GPIO 針位、重新上鎖的時間等。
 
-另外，我們也對整合了之後的電門鎖作一些程式改良：
+### 解決開著門時自動上鎖的問題
+
+過去電門鎖有一個問題：就是有可能在未關上之前就自動上鎖，如果使用「撥閂型電門鎖」的話，這有可能會因為橫閂伸了出來而無法關門上鎖。整合了門窗感測之後，我們就可以按照門的關關狀況而決定甚麼時候自動上鎖。
+
+要注意的是，由於使用磁石的關係，門關到一定程度時，門窗感測器就會以為門已關上。如果一感測到門關上後就立即上鎖的話，有可能會在未關貼前就上鎖，所以即使門窗感測器感應到門關上，也應該延遲一點以避免問題。
 
 * 當 GPIO17 處於 HIGH （解鎖）時，如果 GPIO16 同樣被設為 HIGH （開門），即暫停自動重新上鎖；
 * 當 GPIO16 回復為 LOW （關門）後，延遲 1.5 秒後將 GPIO17 設為 LOW
+
+我們在 `settings.h` 裡新增一個常數 `AUTO_RELOCK_DELAY` 來設定延遲時間，並將 `lock.cpp` 裡 `handleAutoRelock()` 函數的自動上鎖判斷式改成這樣：
+
+```cpp
+if (!isLocked && 
+    !isDoorOpened && 
+    (millis() - lastUnlockTime) > UNLOCK_TIMEOUT && 
+    (millis() - lastDoorBounceTime + DOOR_BOUNCE_DELTA) > AUTO_RELOCK_DELAY
+) {
+    ...
+}
+```
