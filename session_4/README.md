@@ -1,7 +1,7 @@
 # 4. 連接 Wi-Fi
 Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.  
 
-## AP、STA及AP＋STA 模式
+## AP、STA 及 AP＋STA 模式
 
 ## mDNS 與 Bonjour
 

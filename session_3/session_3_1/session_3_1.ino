@@ -24,13 +24,14 @@
 #define DOOR_SENSOR_PIN  16
 #define BUZZER_PIN       33
 
+#define DETECT_DOOR_OPENED true
+#define DOOR_BOUNCE_DELTA  300   // Millisecond
+
 // Variables
 int reedState = LOW; // door closed by default
 // Door sensor related variables
 bool isDoorOpened = false;
-bool detectDoorOpened = true;
 unsigned long lastDoorBounceTime = 0;    // Bounce time for reed sensor
-unsigned long doorBounceDelta = 300;     // Millisecond
 
 void gpioSetup() {
   // Setup outputs
@@ -46,7 +47,7 @@ void gpioSetup() {
 void handleDoorState() {
   reedState = digitalRead(DOOR_SENSOR_PIN);
   // If the door is opened at the first time
-  if (reedState == HIGH && !isDoorOpened && (millis() - lastDoorBounceTime) > doorBounceDelta) {
+  if (reedState == HIGH && !isDoorOpened && (millis() - lastDoorBounceTime) > DOOR_BOUNCE_DELTA) {
     digitalWrite(BUZZER_PIN, HIGH);
     digitalWrite(DOOR_LED_PIN, HIGH);
     isDoorOpened = true;
@@ -54,7 +55,7 @@ void handleDoorState() {
     lastDoorBounceTime = millis();
   }
   // If the door being closed from open state
-  if (reedState == LOW && isDoorOpened && (millis() - lastDoorBounceTime) > doorBounceDelta) {
+  if (reedState == LOW && isDoorOpened && (millis() - lastDoorBounceTime) > DOOR_BOUNCE_DELTA) {
     digitalWrite(BUZZER_PIN, LOW);
     digitalWrite(DOOR_LED_PIN, LOW);
     isDoorOpened = false;
@@ -69,5 +70,5 @@ void setup() {
 }
 
 void loop() {
-  if (detectDoorOpened) handleDoorState();
+  if (DETECT_DOOR_OPENED) handleDoorState();
 }

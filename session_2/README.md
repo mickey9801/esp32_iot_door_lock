@@ -3,11 +3,11 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 
 ## 功能
 * 按掣開啟電門鎖；
-* 電門鎖開啟時亮著綠色 LED；
-* 電門鎖開啟 5 秒後自動重新上鎖
+* 開鎖期間亮著綠色 LED；
+* 開鎖 5 秒後自動重新上鎖
 
 ## 零件表
-* 1 x ESP32 官方開發板（或兼容板）；
+* 1 x ESP32 DevKitC 開發板（或兼容板）；
 * 2 x 19 針單排母座；
 * 1 x 12V 電門鎖；
 * 1 x TIP120 電晶體；
@@ -58,6 +58,14 @@ Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.
 
 ![抑制浪湧電壓](imgs/surge_voltage.png "抑制浪湧電壓")
 
+其他含有線圈的電子零件還包括以下幾種：
+
+* 電感
+* 繼電器
+* 變壓器
+* 各種摩打
+* 喇叭
+
 ## 控制大電源：運用 TIP120 或 MOSFET 電晶體
 ### TIP120
 ![TIP120](imgs/tip120.png "TIP120")
@@ -94,7 +102,27 @@ MOSFET 是一種通過電場效應控制電流的電子元件。只要在閘極�
 <img src="imgs/session_2_breadboard.jpg" width="400" alt="基本門鎖麵包板" title="基本門鎖麵包板">
 
 ## 草稿碼
-* 當 GPIO27 （開門按鈕） 電壓變為 LOW 時，將 GPIO17 （電門鎖） 和 GPIO32 （綠色 LED） 設為 HIGH，並紀錄解鎖時間；
-* 當解鎖超過 5 秒時，將 GPIO17 和 GPIO32 設為 LOW
+* 當 GPIO27 （開門按鈕） 電壓變為 LOW 時，將 GPIO17 （電門鎖） 和 GPIO32 （綠色 LED） 設為 HIGH，並紀錄開鎖時間；
+* 當解鎖超過 5 秒時，將 GPIO17 和 GPIO32 設為 LOW （上鎖）
 
 [基礎門鎖草稿碼](session_2.ino)
+
+### 程式解說
+首先是常數和變數的宣告：
+
+* 23-25 行：為 GPIO 設定有含意的名稱；
+* 27 行：設定自動重新上鎖的時間為 5 秒；
+* 29-33 行：宣告全域變數並設定初始值；
+
+接著是一些功能函式：
+
+* 35-44 行：`gpioSetup()` 設定各 GPIO 的功能，並設定初始電壓。其中連接按鈕的 GPIO 可以設定為 INPUT_PULLUP 以使用內部 Pull-up 電阻；
+* 46-51 行：`lock()`是上鎖動作的實際執行程序；
+* 53-59 行：`unlock()`是開鎖動作的實際執行程序，並且紀錄開鎖時間；
+* 61-67 行：`handlePushButton()`負責傾聽按動開門按鈕事件，指揮開門；
+* 69-75 行：`handleAutoRelock()`根據`UNLOCK_TIMEOUT`設定的自動上鎖時間，在開鎖經過 5 秒後自動重新上鎖；
+
+最後就是 Arduino 程式的起始點和循環流程：
+
+* 77-80 行：`setup()`裡要呼叫剛才寫好的`gpioSetup()`設定 GPIO 和串連通訊速度，以便將除錯資料傳回 Arduino IDE ；
+* 82-85 行：`loop()`先以`handlePushButton()`看看用戶有沒有按開門按鈕並決定是否開鎖，然後就執行`handleAutoRelock()`查看是否要重新上鎖。

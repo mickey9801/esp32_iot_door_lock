@@ -20,16 +20,17 @@
  * 
  */
 
-#define LOCK_LED_PIN 32
-#define LOCK_PIN     17
-#define BTN_PIN      27
+#define LOCK_LED_PIN     32
+#define LOCK_PIN         17
+#define BTN_PIN          27
+
+#define UNLOCK_TIMEOUT   5000  // Millisecond. For auto-relock
 
 // Variables
 int btnState = HIGH; // button not pushed by default
 // Lock related variables
 bool isLocked = true;
 unsigned long lastUnlockTime = 0;        // The last time unlocked
-unsigned long unlockTimeout = 5000;      // Millisecond. For auto-relock
 
 void gpioSetup() {
   // Setup outputs
@@ -67,7 +68,7 @@ void handlePushButton() {
 
 // Relock the door after delta time if the door is not opened (delay for door close bounce)
 void handleAutoRelock() {
-  if (!isLocked &&  (millis() - lastUnlockTime) > unlockTimeout) {
+  if (!isLocked &&  (millis() - lastUnlockTime) > UNLOCK_TIMEOUT) {
     Serial.println("Auto-relock");
     lock();
   }

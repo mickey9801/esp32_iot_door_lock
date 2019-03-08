@@ -1,4 +1,4 @@
-# 1. ESP32 開發板簡介
+# 1. ESP32 開發板槪述
 Copyright &copy; 2019 Mickey Chan. ALL RIGHTS RESERVED.  
 
 ## 專案目標：物聯網電門鎖
@@ -36,10 +36,6 @@ ESP32 包括以下介面：
 * 10 個電容式感應 GPIO
 * 16 個 RTC GPIO ，可用作從低電量模式喚醒 EPS32
 
-Deep Sleep 超低電量模式
-
-實時時鐘（ RTC ）
-
 ### 優點
 * 可使用 Arduino IDE 編寫程式；
 * 原廠 SDK 備有 OTA 更新、網頁伺服器、 UDP 通信等功能；
@@ -47,8 +43,8 @@ Deep Sleep 超低電量模式
 ### 缺點
 * 不擅於單精度浮點除數及所有雙精度浮點運算；
 
-## 針腳
-![ESP32 Pinmap](imgs/esp32-pinout-v2.png?raw=true "ESP32 Pinmap")
+## ESP32 DevKitC 針腳
+![ESP32 DevKitC Pinmap](imgs/esp32-pinout-v2.png?raw=true "ESP32 DevKitC Pinmap")
 
 不同廠商推出的 ESP32 開發板在針腳位置和數量上都會有所分別，不過相同名稱的針腳在任何廠商的開發板中**功能都是一樣的**！
 
@@ -81,12 +77,30 @@ Deep Sleep 超低電量模式
 （串行監視器）  
 
 ### 小遊戲：利用開發板上的 BOOT 按鈕來控制板上的 LED 閃燈次數
-* ESP32 官方開發板上的 LED 是連接到 `GPIO 2` 的；
-* ESP32 官方開發板上的 `BOOT` 按鈕是連接到 `GPIO 0` 的；
+* ESP32-DevKitC 開發板上的 LED 是連接到 `GPIO 2` 的。要注意這 LED 與一般外接 GPIO 時的 LED 不一樣， `HIGH` 的時候是關上，`LOW` 的時候才會亮著；
+* EESP32-DevKitC 開發板上的 `BOOT` 按鈕是連接到 `GPIO 0` 的。這按鈕是內部連上了 Pull-Up 電阻的，所以設定時即使沒有指名 `INPUT_PULLUP` 也好，也是按下時為 `LOW` 的；
 * 紀錄下用戶按下 `BOOT` 按鈕的次數；
 * 當用戶停止輸入 1.3 秒後，按用戶按鍵的次數來閃動板上的 LED
 
 [草稿碼](session_1.ino)
+
+#### 程式解說
+首先是一些常數和變數的宣告：
+
+* 23-24 行：為兩 GPIO 設定具含意的名稱，提高程式碼可讀性；
+* 27-29 行：宣告程式會用到的變數，並給予初始值；
+
+接著是一些功能函式：
+
+* 31-35 行：`gpioSetup()`是用來設定各 GPIO 的功能，即`INPUT`、`OUTPUT`、或`INPUT_PULLUP`，然後設定初始電壓;
+* 37-49 行：`handlePushbutton()`是`Boot`按鈕被按下時的處理函數，將按掣次數紀錄在`pushCount`裡。另外由於按鈕在物理上有回彈的情況，所以我們設定了`lastPushing`來紀錄上次處理按鈕的時間，按下按鈕後， 0.3 秒內暫時不處理按鈕事件；
+* 51-59 行：`publishButton()`是控制甚麼時候閃動 LED 的函式，當 1.3 秒內沒有輸入（按鈕）的話，就開始按按掣次數來閃動 LED；
+* 61-68 行：`flashingLED()`是實際開關 LED 的程式；
+
+最後就是 Arduino 程式的起始點和循環流程：
+
+* 70-73 行：`setup()`裡要呼叫剛才寫好的`gpioSetup()`設定 GPIO 和串連通訊速度，以便將除錯資料傳回 Arduino IDE ；
+* 75-78 行：`loop()`就循環呼叫按鈕處理函式和控制 LED 閃動的函式；
 
 ## 參考文獻
 * [Arduino language reference](https://www.arduino.cc/en/Reference/HomePage)
